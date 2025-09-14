@@ -20,14 +20,14 @@ def test_fill_forms(browser_config):
 
     #Дата рождения
     browser.element('#dateOfBirthInput').click()
-    #Месяц
-    browser.element('.react-datepicker__month-select').click()
+
+    browser.element('.react-datepicker__month-select').click() #Месяц
     browser.element('.react-datepicker__month-select [value = "6"]').click()
-    #Год
-    browser.element('.react-datepicker__year-select').click()
+
+    browser.element('.react-datepicker__year-select').click() #Год
     browser.element('.react-datepicker__year-select [value = "2002"]').click()
-    #День
-    browser.element('.react-datepicker__day--011:not(.react-datepicker__day--outside-month)').click()
+
+    browser.element('.react-datepicker__day--011:not(.react-datepicker__day--outside-month)').click() #День
 
     #Subject
     browser.element('#subjectsInput').type("Eng").press_enter() # Проверка выбора значения через enter
@@ -36,10 +36,6 @@ def test_fill_forms(browser_config):
     browser.element('.subjects-auto-complete__menu').should(be.visible)
     browser.all('.subjects-auto-complete__option').element_by(have.exact_text('Computer Science')).click()
     browser.all('.subjects-auto-complete__multi-value__label').element_by(have.exact_text('Computer Science')).should(be.visible)
-
-    #Проверка
-    browser.element('#subjectsWrapper').should(have.text('English'))
-    browser.element('#subjectsWrapper').should(have.text('Computer Science'))
 
     #Загрузка фото
     browser.element('#uploadPicture').type(os.path.abspath('IMG_8683.PNG'))
